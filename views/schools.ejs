@@ -23,8 +23,8 @@
   <div class="grid">
     <% schools.forEach(school => { %>
       <div class="card">
-        <h3><%= school.title %></h3>
-        <p><%= school.description %></p>
+        <h3><%= school.name %></h3>
+        <p><img src=<%= school.image.url %> height=400px width=400px></p>
       </div>
     <% }) %>
   </div>

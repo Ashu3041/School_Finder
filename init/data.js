@@ -4,7 +4,7 @@ module.exports.data = [
     description: "Best School for You",
     image: {
       filename: "listingimage",
-      url: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b"
+      url:"https://www.bing.com/images/search?q=animated+school+image+copyright+free&id=C946EC7E0DAD19743D01EDC7A5FADB350D80DFC9&form=IACFIR&first=1&disoverlay=1"
     },
     city:"Bhubaneswar",
     location: " PLOT -5A ,Infocity AVE .093381 69966",

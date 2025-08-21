@@ -45,9 +45,9 @@ app.get("/search", async (req, res) => {
   let cityName = req.query.cityFromSearch;
 
   try {
-    const schools = await Listing.find({ location: cityName });
-    console.log("Searching for:", cityName);
-    console.log(await Listing.find({}));
+    const schools = await Listing.find({ city: cityName });
+    // console.log("Searching for:", cityName);
+    // console.log(await Listing.find({}));
 
     res.render("schools.ejs", { city: cityName, schools });
   } catch (err) {
