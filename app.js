@@ -2,6 +2,9 @@ const express=require("express");
 const session = require("express-session");
 const path=require("path");
 const Listing=require("./models/listing.js");
+const mongoose=require("mongoose");
+
+
 const app=express();
 
 
@@ -17,57 +20,41 @@ app.set("views",path.join(__dirname,"views"));
 
 // MongoDB Connection
 
-mongoose.connect("mongodb://127.0.0.1:27017/odisha_schools")
-  .then(() => console.log('Connected!'))
-  .catch(err=>console.log(err));
+// DB Connection URL
+const mongo_url = "mongodb+srv://ashutosh:ashutosh123@cluster0.d5vvguk.mongodb.net/odisha_schools?retryWrites=true&w=majority&appName=Cluster0";
 
-//   Session for LogIn
-
-app.use(session({
-    secret:"secretkey123",
-    resave:false,
-    saveUninitialized:true
-}));
+async function main() {
+  await mongoose.connect(mongo_url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+}
 
 
-
-// const userSchema=new mongoose.Schema({
-//   username:String,
-//   password:String
-// });
-
-// const User=mongoose.model("User",userSchema);
-
+main()
+  .then(() => console.log("✅ Connected to DB"))
+  .catch((err) => console.error("❌ DB Connection Error:", err));
 
 // ROUTES
 
 app.get("/",(req,res)=>{
-  res.render("home.ejs");
+  res.render("Home.ejs");
 });
 
+app.get("/search", async (req, res) => {
+  let cityName = req.query.cityFromSearch;
 
-app.post("/search",async(req,res)=>{
-  const city=req.body.city;
-  const schools=await School.find({city:city});
-  res.render("searchResults", { schools, city });
+  try {
+    const schools = await Listing.find({ location: cityName });
+    console.log("Searching for:", cityName);
+    console.log(await Listing.find({}));
 
-});
-
-
-app.get("/school/:id",(req,res)=>{
-  // let schoolId=req.params.id;
-  res.render("login.ejs",{schoolId:req.params.id});
-});
-
-app.post("/login",(req,res)=>{
-  const {username,password,schoolId}=req.body;
-  const user=User.findOne({username,password});
-  if(!user){
-    return res.send("Invalid credentials! <a href='/'>Go Back</a>");
+    res.render("schools.ejs", { city: cityName, schools });
+  } catch (err) {
+    res.status(500).send("Error fetching schools");
   }
-  const school=School.findById(schoolId);
-  res.render("schoolDetails",{school,user});
 });
+
 
 const port=8080;
 app.listen(port,()=>{

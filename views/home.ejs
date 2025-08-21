@@ -1,17 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Finder-Home</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find the Best School</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      text-align: center;
+      /* transition: opacity 15ms ease; */
+    }
+    /* body.fade-out {
+      opacity: 0;
+    } */
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar ul li {
+      display: inline;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .navbar .signup {
+      background: #3cc25c;
+      padding: 8px 15px;
+      border-radius: 5px;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 60px;
+      padding: 30px;
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .search-box {
+      margin: 30px auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .search-box input {
+      padding: 12px;
+      width: 300px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .search-box button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #3cc25c;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .filters {
+      margin-top: 20px;
+    }
+
+    .filters button {
+      margin: 5px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #3cc25c;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Footer Message Button */
+    .chat-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #6a11cb;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to School Finder</h1>
-    <form action="/search" method="post">
-        <input type="text" name="city" placeholder="Enter City..." required>
-        <button type="submit">Search</button>
-    </form>
-    <p>Find the best School in your city.</p>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">School Finder</div>
+    <ul class="delayed-link">
+      <li>Find Schools</a></li>
+      <li>Log In</a></li>
+      <li class="signup">Sign Up</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>FIND THE BEST SCHOOL FOR YOUR CHILD</h1>
+
+    <div class="search-box">
+      <form action="/search" method="GET">
+      <input type="text" name="cityFromSearch" placeholder="Enter The City..."  required>
+      <button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+
 </body>
 </html>

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const listingSchema = new mongoose.Schema({
-  title: {
+  name: {
     type: String,
     required: true
   },
@@ -10,10 +10,10 @@ const listingSchema = new mongoose.Schema({
     filename: String,
     url: String
   },
-  rating:Number,
-  board:String,
+  city: String,
   location: String,
-  country: String
+  board:String,
+  type:String
 });
 
 const Listing = mongoose.model("Listing", listingSchema);

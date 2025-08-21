@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Schools in <%= city %></title>
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Schools in <%= city %></h1>
+  <div class="grid">
+    <% schools.forEach(school => { %>
+      <div class="card">
+        <h3><%= school.title %></h3>
+        <p><%= school.description %></p>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>
