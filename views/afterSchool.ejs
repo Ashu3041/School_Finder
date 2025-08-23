@@ -24,7 +24,7 @@
     <% schools.forEach(school => { %>
       <div class="card">
         <h3><%= school.name %></h3>
-        <a href="/login">
+        <a href="/schools/<%= school._id %>">
           <p><img src=<%= school.image.url %> height=400px width=400px></p>
         </a>
       </div>
